@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h1>Enriquecimiento Ontológico: CINE</h1>
+
+<h3>Palabras Clave: {{ usuario }}</h3>
+
+<form action="{{ url_for('ansys') }}" method="post">
+    Personaje:<br>
+    <input type="text" name="user_id">
+    <br>
+    Número coincidencias:<br>
+    <input type="text" name="number">
+    <br>
+    <input type="submit" name="Buscar"/>
+    
+</form>
+
+
+
+    {% for table in tables %}
+                {{ table|safe }}
+    {% endfor %}
+
+<br><br>
+
+<form action="{{ url_for('contenidos') }}" method="post">
+    Seleccione un personaje:<br>
+    <input type="text" name="personaje">
+    <br>
+    <input type="submit" name="Seleccionar"/>
+    {% for post in posts %}
+            
+        <h2> Personaje: {{personaje}} </h2>
+        <p> Pareja: {{post['cónyuge']}} </p>
+        <p> Películas: {{post['películas']}} </p>
+
+    {% endfor %}
+
+    {% endblock content %}
